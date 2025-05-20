@@ -1,0 +1,36 @@
+<!-- res/values/attrs.xml -->
+<resources>
+    <declare-styleable name="SearchDropdownView">
+
+
+        <!-- Network & UI -->
+        <attr name="apiUrl" format="string"/>
+        <attr name="hintText" format="string"/>
+        <attr name="minChars" format="integer"/>
+
+        <!-- Visual customizations -->
+        <attr name="loadingDrawable" format="reference"/>
+        <attr name="maxRows" format="integer"/>
+        <attr name="primaryColor" format="color|reference"/>
+        <attr name="backgroundColor" format="color|reference"/>
+        <attr name="textColor" format="color|reference"/>
+        <attr name="searchBoxStrokeColor" format="color|reference"/>
+        <attr name="searchBoxStrokeWidth" format="dimension"/>
+
+
+        <!-- Dropdown-item customizations -->
+        <attr name="dropdownDisplayField" format="string"/>
+        <attr name="dropdownItemTextColor" format="color|reference"/>
+        <attr name="dropdownItemBackgroundColor" format="color|reference"/>
+        <attr name="dropdownItemTextSize" format="dimension"/>
+        <attr name="dropdownItemStrokeColor" format="color|reference"/>
+        <attr name="dropdownItemStrokeWidth" format="dimension"/>
+
+        <!-- Cache TTL in seconds -->
+        <attr name="cacheTtlSeconds" format="integer"/>
+
+        <!-- DataBinding callbacks -->
+        <attr name="onSuccess" format="string"/>
+        <attr name="onError"   format="string"/>
+    </declare-styleable>
+</resources>

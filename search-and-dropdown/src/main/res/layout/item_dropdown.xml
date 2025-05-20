@@ -1,0 +1,23 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dropdownCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    app:cardUseCompatPadding="false"
+    app:cardPreventCornerOverlap="false"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/teal_200"
+    app:strokeWidth="0.5dp">
+
+<TextView
+android:id="@+id/itemText"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:padding="12dp"
+android:textColor="?attr/colorOnSurface"
+android:textSize="16sp"
+android:background="?attr/selectableItemBackground" />
+    </com.google.android.material.card.MaterialCardView>

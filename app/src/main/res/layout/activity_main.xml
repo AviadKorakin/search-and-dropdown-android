@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:ignore="ExtraText">
+
+        <com.aviadkorakin.search_and_dropdown.SearchDropdownView
+            android:id="@+id/searchDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+        app:apiUrl="https://nominatim.openstreetmap.org/search?format=json&amp;"
+
+        app:hintText="Search for a place…"
+        app:minChars="3"
+        app:cacheTtlSeconds="5"
+        app:dropdownItemStrokeColor="@color/black"
+        app:searchBoxStrokeColor="@color/black"
+        app:loadingDrawable="@drawable/loading"
+        app:maxRows="2"
+        app:textColor="@android:color/black"
+        app:backgroundColor="@android:color/white"
+        app:dropdownItemTextColor="@android:color/black"
+        app:dropdownItemBackgroundColor="@android:color/white"
+        app:dropdownItemTextSize="14sp"/>
+    </FrameLayout>
+</layout>

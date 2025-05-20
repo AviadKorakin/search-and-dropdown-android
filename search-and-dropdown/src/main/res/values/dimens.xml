@@ -1,0 +1,9 @@
+<resources>
+    <!-- default dropdown item text size -->
+    <dimen name="dropdown_item_text_size">16sp</dimen>
+    <!-- default stroke width for search box outline -->
+    <dimen name="default_search_box_stroke_width">1dp</dimen>
+
+    <!-- default stroke width for each dropdown item card -->
+    <dimen name="default_dropdown_item_stroke_width">1dp</dimen>
+</resources>

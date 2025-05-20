@@ -1,0 +1,10 @@
+<resources>
+    <!-- Teal 200 (Material Design) -->
+    <color name="teal_200">#80CBC4</color> <!--  [oai_citation:0‡Gist](https://gist.github.com/kawanet/a880c83f06d6baf742e45ac9ac52af96) -->
+
+    <!-- Teal 700 (Material Design) -->
+    <color name="teal_700">#00796B</color> <!--  [oai_citation:1‡Gist](https://gist.github.com/kawanet/a880c83f06d6baf742e45ac9ac52af96) -->
+
+    <!-- White -->
+    <color name="white">#FFFFFF</color>   <!--  [oai_citation:2‡Color Name](https://www.color-name.com/hex/FFFFFF?utm_source=chatgpt.com) -->
+</resources>
