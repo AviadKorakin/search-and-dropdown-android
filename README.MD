@@ -1,3 +1,5 @@
+<!-- HTML -->
+<div class="video-thumb">
 <style>
   .video-thumb {
     position: relative;
@@ -28,9 +30,6 @@
     pointer-events: none; /* let clicks pass through to the link */
   }
 </style>
-
-<!-- HTML -->
-<div class="video-thumb">
   <a href="https://www.youtube.com/watch?v=GhcdHBF9w9s" target="_blank" rel="noopener">
     <img src="https://img.youtube.com/vi/GhcdHBF9w9s/default.jpg" alt="Video Thumbnail">
     <div class="watch-btn">Watch</div>
