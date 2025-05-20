@@ -1,5 +1,42 @@
+<!-- CSS (can go in your <head> or external stylesheet) -->
+<style>
+  .video-thumb {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+  }
 
+  .video-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
+  .video-thumb .watch-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 2px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    pointer-events: none; /* let clicks pass through to the link */
+  }
+</style>
+
+<!-- HTML -->
+<div class="video-thumb">
+  <a href="https://www.youtube.com/watch?v=GhcdHBF9w9s" target="_blank" rel="noopener">
+    <img src="https://img.youtube.com/vi/GhcdHBF9w9s/default.jpg" alt="Video Thumbnail">
+    <div class="watch-btn">Watch</div>
+  </a>
+</div>
 
 
 
