@@ -1,7 +1,7 @@
 ***Overview***
 
 `SearchDropdownView` is a lightweight Android `View` that provides:
-1. 🔍 Live place search (e.g. OpenStreetMap’s Nominatim)
+1. 🔍 Url based search (e.g. OpenStreetMap’s Nominatim)
 2. 🕒 Built-in caching with configurable TTL
 3. 🎨 Customizable styling for both the search box and dropdown items
 4. 🔄 Callback hooks for success, error, and item selection
