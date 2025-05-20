@@ -55,8 +55,14 @@ class SearchRepository(
 
         // 3) miss → build URL & fetch
         val encoded = URLEncoder.encode(query, "UTF-8")
-        val separator = if (baseUrl.contains('?')) '&' else '?'
-        val fullUrl = "$baseUrl${separator}q=$encoded"
+        val fullUrl = if (baseUrl.contains("{query}")) {
+            // Replace every occurrence of {query} with the encoded text
+            baseUrl.replace("{query}", encoded)
+        } else {
+            // Fallback: append ?q= or &q=
+            val separator = if (baseUrl.contains('?')) '&' else '?'
+            "$baseUrl${separator}q=$encoded"
+        }
 
         Log.d(
             "SearchRepository",

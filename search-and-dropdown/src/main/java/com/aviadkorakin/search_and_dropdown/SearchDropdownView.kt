@@ -1,6 +1,7 @@
 package com.aviadkorakin.search_and_dropdown
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +29,7 @@ class SearchDropdownView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyle) {
 
     private val binding = ViewSearchDropdownBinding
-       .inflate(LayoutInflater.from(context), this)
+        .inflate(LayoutInflater.from(context), this, true)
 
     //repository
     private var repo: SearchRepository
@@ -138,43 +139,19 @@ class SearchDropdownView @JvmOverloads constructor(
         val gifView     = binding.loadingGifView
         val progressBar = binding.loadingProgressBar
 
-        val useGif = runCatching {
-            Glide.with(context)
-                .asGif()
-                .load(loadingDrawableRes)
-                .submit()
-                .get()
-            true
-        }.getOrDefault(false)
-
-        if (useGif && loadingDrawableRes != 0) {
-            progressBar.visibility = GONE
-            gifView.visibility = VISIBLE
-            Glide.with(context)
-                .asGif()
-                .load(loadingDrawableRes)
-                .into(gifView)
-        } else {
-            gifView.visibility = GONE
-            progressBar.visibility = VISIBLE
-            progressBar.indeterminateDrawable =
-                ContextCompat.getDrawable(context, loadingDrawableRes)
-        }
+        binding.searchFieldLayout.boxStrokeColor= searchBoxStrokeColor
         binding.searchFieldLayout.apply {
+            hint = hintText
+            // 2) Give the floating label a ColorStateList
+            setDefaultHintTextColor(ColorStateList.valueOf(textColor))
             boxStrokeColor = searchBoxStrokeColor
-            setBoxStrokeWidth(searchBoxStrokeWidthPx/2)
         }
-
-        binding.searchEditText.apply {
-            setTextColor(textColor)
-            hintText?.let { hint = it }
-        }
+        binding.searchEditText.setHintTextColor(textColor)
         binding.resultsRecyclerView.apply {
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 maxHeightPx
             )
-            setBackgroundColor(backgroundColor)
 
         }
 
@@ -237,6 +214,8 @@ class SearchDropdownView @JvmOverloads constructor(
         }
 
 
+
+
         binding.searchEditText.textChanges()
             .filter { !suppressNextSearch }
             .debounce(300)
@@ -248,29 +227,48 @@ class SearchDropdownView @JvmOverloads constructor(
     }
 
     private fun fetchResults(query: String, adapter: DropdownAdapter) {
-              // show loading
-             binding.loadingProgressBar.visibility = VISIBLE
+        val showGif = loadingDrawableRes != 0
+        if (showGif) {
+            binding.loadingProgressBar.visibility = GONE
+            binding.loadingGifView.apply {
+                visibility = VISIBLE
+                bringToFront()
+                // reload the GIF at desired size
+                Glide.with(context)
+                    .asGif()
+                    .load(loadingDrawableRes)
+                    .override(64, 64)
+                    .centerCrop()
+                    .into(this)
+            }
+        } else {
             binding.loadingGifView.visibility = GONE
-
-            // call into your SearchRepository
-             CoroutineScope(Dispatchers.Main).launch {
-                    try {
-                        android.util.Log.d(
-                                    "SearchDropdownView",
-                                  "fetchResults() → query='$query', baseUrl='$apiUrl', minChars=$minChars, TTL=${cacheTtlSeconds}s"
-                                         )
-                        val results: List<Map<String, Any>> = repo.search(query)
-                         binding.loadingProgressBar.visibility = GONE
-                         adapter.submitList(results)
-                         successListener?.invoke(results)
-                         onSuccessMethod?.let { invokeCallback(it, results) }
-                       } catch (t: Throwable) {
-                        binding.loadingProgressBar.visibility = GONE
-                        errorListener?.invoke(t)
-                         onErrorMethod?.let { invokeCallback(it, t) }
-                       }
-                 }
-           }
+            binding.loadingProgressBar.apply {
+                visibility = VISIBLE
+                bringToFront()
+            }
+        }
+        // call into your SearchRepository
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                android.util.Log.d(
+                    "SearchDropdownView",
+                    "fetchResults() → query='$query', baseUrl='$apiUrl', minChars=$minChars, TTL=${cacheTtlSeconds}s"
+                )
+                val results: List<Map<String, Any>> = repo.search(query)
+                binding.loadingGifView.visibility     = GONE
+                binding.loadingProgressBar.visibility = GONE
+                adapter.submitList(results)
+                successListener?.invoke(results)
+                onSuccessMethod?.let { invokeCallback(it, results) }
+            } catch (t: Throwable) {
+                binding.loadingGifView.visibility     = GONE
+                binding.loadingProgressBar.visibility = GONE
+                errorListener?.invoke(t)
+                onErrorMethod?.let { invokeCallback(it, t) }
+            }
+        }
+    }
 
     private fun invokeCallback(methodName: String, param: Any) {
         runCatching {
