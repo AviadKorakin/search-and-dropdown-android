@@ -1,4 +1,3 @@
-<!-- CSS (can go in your <head> or external stylesheet) -->
 <style>
   .video-thumb {
     position: relative;
