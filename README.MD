@@ -1,43 +1,3 @@
-<!-- HTML -->
-<div class="video-thumb">
-<style>
-  .video-thumb {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-
-  .video-thumb img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .video-thumb .watch-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 2px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    pointer-events: none; /* let clicks pass through to the link */
-  }
-</style>
-  <a href="https://www.youtube.com/watch?v=GhcdHBF9w9s" target="_blank" rel="noopener">
-    <img src="https://img.youtube.com/vi/GhcdHBF9w9s/default.jpg" alt="Video Thumbnail">
-    <div class="watch-btn">Watch</div>
-  </a>
-</div>
-
-
-
 ***Overview***
 
 `SearchDropdownView` is a lightweight Android `View` that provides:
@@ -145,3 +105,18 @@
 | ➖   | `app:dropdownItemStrokeWidth`     | dimension        | same as `searchBoxStrokeWidth` | Item outline width.                                    |
 | ✅   | `app:onSuccess`                   | string           | none                   | Name of no-arg method to call on success.                      |
 | ❌   | `app:onError`                     | string           | none                   | Name of single-Throwable-arg method to call on error.          |
+
+
+
+<iframe
+    width="560" 
+    height="315"
+    src="https://www.youtube.com/embed/GhcdHBF9w9s"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
+
+
+
